@@ -172,8 +172,8 @@ function pan(event) {
 }
 
 function identify(event) {
-	let imgx = (event.clientX - frmlef + imglef) / scale;
-	let imgy = (event.clientY - frmtop + imgtop) / scale;
+	let imgx = (event.clientX - frmlef + window.scrollX + imglef) / scale;
+	let imgy = (event.clientY - frmtop + window.scrollY + imgtop) / scale;
 	//console.log("x = " + imgx.toFixed(0) + ", y = " + imgy.toFixed(0));
 		
 	var found = false;
@@ -183,8 +183,8 @@ function identify(event) {
 		
 		if (scale > 0.25) {
 			tag1.innerText = data[i].name;
-			tag1.style.left = (event.clientX - frmlef - data[i].name.length * 10) + "px";
-			tag1.style.top = (event.clientY - frmtop + 25) + "px";
+			tag1.style.left = (event.clientX + window.scrollX - frmlef - data[i].name.length * 10) + "px";
+			tag1.style.top = (event.clientY + window.scrollY - frmtop + 25) + "px";
 		} else {
 			inset.style.display = "block";
 			tag2.innerText = data[i].name;
